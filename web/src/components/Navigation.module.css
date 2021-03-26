@@ -3,3 +3,11 @@
   bottom: 30px;
   right: 30px;
 }
+
+.searchCircle1{
+  fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 16px;
+}
+
+.searchRect{
+  stroke-linecap: round; stroke-linejoin: round; stroke-width: 8px;
+}
