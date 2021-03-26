@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import NavBar from "./components/navbar";
+import Navigation from "./components/Navigation";
 import Main from "./Main";
 import {createMuiTheme, CssBaseline} from "@material-ui/core";
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -16,8 +16,8 @@ function App() {
       <ThemeProvider theme={theme}>
           <CssBaseline />
           <div>
-              <NavBar />
               <Main />
+              <Navigation />
           </div>
       </ThemeProvider>
   );
