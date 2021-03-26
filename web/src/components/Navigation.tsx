@@ -1,18 +1,41 @@
 import React, {useRef, useState} from "react";
 import {Fab} from "@material-ui/core";
 import style from './Navigation.module.css';
-import {useSpring, a, config} from 'react-spring';
+import {useSpring, useSprings, a, config} from 'react-spring';
 import {redFlame1, redFlame2, yellowFlame1, yellowFlame2} from "./svgPoints";
 
+const Afab = a(Fab);
+
 export default function Navigation(){
+    const [springs, set] = useSprings(2, (index: number) => ({rotate: index === 0 ? 0 : 180, config: config.wobbly}))
+
+    function searchClick(){
+        set((index: number) => {
+            return {
+                rotate: index === 1 ? 0 : 180
+            }
+        })
+    }
+
+    function backClick(){
+        set((index: number) => {
+            return {
+                rotate: index === 0 ? 0 : 180
+            }
+        })
+    }
+
     return (
         <div className={style.navigation}>
-            <Back />
+            {springs.map((spring, index) => {
+                return index === 0 ? <Search spring={spring} key="123" click={searchClick}/> : <Back spring={spring} key="321" click={backClick}/>;
+            })}
         </div>
     )
 }
 
-function Search() {
+// @ts-ignore
+function Search({spring, click}) {
     const [state, setState] = useState(false);
 
     const props = useSpring({
@@ -26,7 +49,11 @@ function Search() {
     }
 
     return (
-        <Fab size={"medium"} style={{overflow: 'hidden'}} onMouseEnter={Mouse} onMouseLeave={Mouse}>
+        <Afab style={{
+            rotate: spring.rotate.interpolate((x: number) => `${x}deg`),
+            transformOrigin: '150% 150%',
+            overflow: 'hidden'
+        }} size={"medium"} onMouseEnter={Mouse} onMouseLeave={Mouse} onClick={() => click()}>
             <svg viewBox="0 0 500 500">
                 <a.g style={{
                     scale: props.scale,
@@ -36,11 +63,12 @@ function Search() {
                     <rect className={style.searchRect} x="353.878" y="247.075" width="50.553" height="138.616" transform="matrix(0.694708, -0.719292, 0.719292, 0.694708, -179.108673, 365.228607)" data-bx-origin="0.471 0.494"/>
                 </a.g>
             </svg>
-        </Fab>
+        </Afab>
     )
 }
 
-function Back(){
+// @ts-ignore
+function Back({spring, click}){
     const [intervalId, setIntervalId] = useState();
 
     const [state, setState] = useState(false);
@@ -70,7 +98,11 @@ function Back(){
     }
 
     return (
-        <Fab size={"medium"} onMouseEnter={MouseIn} onMouseLeave={MouseOut}>
+        <Afab style={{
+            rotate: spring.rotate.interpolate((x: number) => `${x}deg`),
+            transformOrigin: '150% 150%',
+            overflow: 'hidden'
+        }} size={"medium"} onMouseEnter={MouseIn} onMouseLeave={MouseOut} onClick={() => click()}>
             <svg viewBox="0 0 500 500">
                 <a.g style={{
                     scale: props.scale,
@@ -81,6 +113,6 @@ function Back(){
                 <a.polygon className={style.backFlame1} points={props.red}/>
                 <a.polygon className={style.backFlame2} points={props.yellow}/>
             </svg>
-        </Fab>
+        </Afab>
     )
 }
