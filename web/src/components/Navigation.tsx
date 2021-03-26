@@ -10,18 +10,20 @@ export default function Navigation(){
     const [springs, set] = useSprings(2, (index: number) => ({rotate: index === 0 ? 0 : 180, config: config.wobbly}))
 
     function searchClick(){
-        set((index: number) => {
-            return {
+        set.current.forEach((value, index) => {
+            value.update({
                 rotate: index === 1 ? 0 : 180
-            }
+            })
+            value.start();
         })
     }
 
     function backClick(){
-        set((index: number) => {
-            return {
+        set.current.forEach((value, index) => {
+            value.update({
                 rotate: index === 0 ? 0 : 180
-            }
+            });
+            value.start();
         })
     }
 
@@ -52,7 +54,8 @@ function Search({spring, click}) {
         <Afab style={{
             rotate: spring.rotate.interpolate((x: number) => `${x}deg`),
             transformOrigin: '150% 150%',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            marginRight: '-38px'
         }} size={"medium"} onMouseEnter={Mouse} onMouseLeave={Mouse} onClick={() => click()}>
             <svg viewBox="0 0 500 500">
                 <a.g style={{
