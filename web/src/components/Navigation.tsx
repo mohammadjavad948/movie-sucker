@@ -56,9 +56,8 @@ function Back(){
 
     function MouseIn() {
         const id = setInterval(() => {
-            console.log('interval')
             stateRef = !stateRef;
-            setState(stateRef)
+            setState(stateRef);
         }, 200);
 
         // @ts-ignore
