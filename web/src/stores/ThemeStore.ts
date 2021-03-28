@@ -7,7 +7,7 @@ interface ThemeStoreI extends State{
     light: () => void
 }
 
-export const UseThemeStore = create<ThemeStoreI>((set) => {
+export const useThemeStore = create<ThemeStoreI>((set) => {
     return {
         theme: localStorage.getItem('theme') || 'dark',
         dark: () => {
