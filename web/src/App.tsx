@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation";
 import Main from "./Main";
 import {createMuiTheme, CssBaseline} from "@material-ui/core";
 import { ThemeProvider } from '@material-ui/core/styles';
+import {useThemeStore} from "./stores/ThemeStore";
 
 const dark = createMuiTheme({
     palette: {
@@ -19,15 +20,17 @@ const light = createMuiTheme({
 });
 
 function App() {
-  return (
-      <ThemeProvider theme={dark}>
-          <CssBaseline />
-          <div>
-              <Main />
-              <Navigation />
-          </div>
-      </ThemeProvider>
-  );
+    const {theme} = useThemeStore();
+
+    return (
+        <ThemeProvider theme={theme === 'dark' ? dark : light}>
+            <CssBaseline/>
+            <div>
+                <Main/>
+                <Navigation/>
+            </div>
+        </ThemeProvider>
+    );
 }
 
 export default App;
