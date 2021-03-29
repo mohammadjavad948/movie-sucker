@@ -45,7 +45,7 @@ export default function MovieCard({data}) {
                     image={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                     title={data.title}
                 />
-                <Rate />
+                <Rate rate={data.vote_average}/>
                 <CardContent>
                     <Typography gutterBottom variant="h6" component="h5">
                         {data.title}
@@ -56,13 +56,14 @@ export default function MovieCard({data}) {
     );
 }
 
-function Rate(){
+// @ts-ignore
+function Rate({rate}){
 
     return (
-        <div className={style.circle}>
-            7
+        <a.div className={style.circle}>
+            {rate}
             <svg viewBox="0 0 36 36" className={style.svg}>
-                <path
+                <a.path
                     d="M18 2.0845
                         a 15.9155 15.9155 0 0 1 0 31.831
                         a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -72,6 +73,6 @@ function Rate(){
                     strokeDasharray="75, 100"
                 />
             </svg>
-        </div>
+        </a.div>
     )
 }
