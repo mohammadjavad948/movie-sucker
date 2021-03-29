@@ -1,0 +1,25 @@
+.navigation{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.searchCircle1{
+  fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 16px;
+}
+
+.searchRect{
+  stroke-linecap: round; stroke-linejoin: round; stroke-width: 8px;
+}
+
+.backFlash{
+  stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round;
+}
+
+.backFlame1{
+  fill: rgb(250, 0, 0);
+}
+
+.backFlame2{
+  fill: rgb(250, 217, 0);
+}

@@ -1,0 +1,8 @@
+.circle{
+    fill: none; stroke-width: 36px;
+}
+
+.topBar{
+    display: flex;
+    gap: 50px;
+}
