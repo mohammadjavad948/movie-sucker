@@ -14,7 +14,8 @@ const useStyles = makeStyles({
     },
 });
 
-export default function MovieCard() {
+// @ts-ignore
+export default function MovieCard({data}) {
     const classes = useStyles();
 
     return (
@@ -22,25 +23,17 @@ export default function MovieCard() {
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    alt="Contemplative Reptile"
-                    height="140"
-                    image="https://images-na.ssl-images-amazon.com/images/I/71jKxPAMFbL._AC_SL1500_.jpg"
-                    title="Contemplative Reptile"
+                    alt={data.title}
+                    height="278"
+                    image={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+                    title={data.title}
                 />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        Joker
+                    <Typography gutterBottom variant="h6" component="h5">
+                        {data.title}
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions>
-                <Button size="small" color="primary">
-                    Share
-                </Button>
-                <Button size="small" color="primary">
-                    Learn More
-                </Button>
-            </CardActions>
         </Card>
     );
 }
