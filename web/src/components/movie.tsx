@@ -21,7 +21,7 @@ export default function MovieCard({data}) {
     const [hover, setHover] = useState(false);
 
     const props = useSpring({
-        width: hover ? 280 : 185,
+        width: hover ? 210 : 185,
         config: config.wobbly
     });
 
