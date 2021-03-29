@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -59,9 +59,16 @@ export default function MovieCard({data}) {
 // @ts-ignore
 function Rate({rate}){
 
+    const props = useSpring({
+        from: {x: 0},
+        to: {x: rate},
+        config: { mass: 1, tension: 180, friction: 12, duration: 2000 },
+        delay: 500
+    })
+
     return (
-        <a.div className={style.circle}>
-            {rate}
+        <div className={style.circle}>
+            <a.span>{props.x.to((x: number) => x.toFixed(1))}</a.span>
             <svg viewBox="0 0 36 36" className={style.svg}>
                 <a.path
                     d="M18 2.0845
@@ -70,9 +77,9 @@ function Rate({rate}){
                     fill="none"
                     stroke="#444"
                     strokeWidth="3"
-                    strokeDasharray="75, 100"
+                    strokeDasharray={props.x.to((x: number) => `${x * 10}, 100`)}
                 />
             </svg>
-        </a.div>
+        </div>
     )
 }
