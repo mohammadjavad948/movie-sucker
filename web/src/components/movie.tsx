@@ -5,7 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import {useSpring, a} from "react-spring";
+import {useSpring, a, config} from "react-spring";
 
 const AnimatedCard = a(Card);
 
@@ -21,7 +21,8 @@ export default function MovieCard({data}) {
     const [hover, setHover] = useState(false);
 
     const props = useSpring({
-        width: hover ? 280 : 185
+        width: hover ? 280 : 185,
+        config: config.wobbly
     });
 
     function Mouse(){
