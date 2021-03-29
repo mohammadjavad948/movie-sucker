@@ -7,7 +7,7 @@
 .idea
 # testing
 /coverage
-
+/src/env.ts
 # production
 /build
 
