@@ -66,6 +66,20 @@ function Rate({rate}){
         delay: 500
     })
 
+    function colorCreator(rate: number){
+        if (rate >= 8){
+            return '#11d144'
+        } else if (rate >= 6){
+            return '#a1d111'
+        } else if (rate >= 4){
+            return '#e8de1c'
+        }else if (rate >= 2){
+            return '#f0991f'
+        }else {
+            return '#f7450f'
+        }
+    }
+
     return (
         <div className={style.circle}>
             <a.span>{props.x.to((x: number) => x.toFixed(1))}</a.span>
@@ -75,7 +89,7 @@ function Rate({rate}){
                         a 15.9155 15.9155 0 0 1 0 31.831
                         a 15.9155 15.9155 0 0 1 0 -31.831"
                     fill="none"
-                    stroke="#444"
+                    stroke={props.x.to(colorCreator)}
                     strokeWidth="3"
                     strokeDasharray={props.x.to((x: number) => `${x * 10}, 100`)}
                 />
