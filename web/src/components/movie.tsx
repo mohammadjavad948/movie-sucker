@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {useSpring, a, config} from "react-spring";
+import style from './Movie.module.css';
 
 const AnimatedCard = a(Card);
 
@@ -58,21 +59,18 @@ export default function MovieCard({data}) {
 function Rate(){
 
     return (
-        <div style={{
-            width: '40px',
-            height: '40px',
-            background: 'white',
-            borderRadius: '50%',
-            position: 'absolute',
-            top: '20px',
-            right: '20px'
-        }}>
-            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" strokeDashoffset={50}>
-                <circle cx="20" cy="20" r="18" style={{
-                    fill: 'none',
-                    stroke: 'rgb(148 255 0)',
-                    strokeWidth: '3px'
-                }}/>
+        <div className={style.circle}>
+            7
+            <svg viewBox="0 0 36 36" className={style.svg}>
+                <path
+                    d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                    fill="none"
+                    stroke="#444"
+                    strokeWidth="3"
+                    strokeDasharray="75, 100"
+                />
             </svg>
         </div>
     )
