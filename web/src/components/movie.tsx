@@ -31,7 +31,8 @@ export default function MovieCard({data}) {
 
     return (
         <AnimatedCard className={classes.root} style={{
-            width: props.width.to(x => `${x}px`)
+            width: props.width.to(x => `${x}px`),
+            position: 'relative'
         }}
         onMouseEnter={Mouse}
         onMouseLeave={Mouse}>
@@ -43,6 +44,7 @@ export default function MovieCard({data}) {
                     image={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                     title={data.title}
                 />
+                <Rate />
                 <CardContent>
                     <Typography gutterBottom variant="h6" component="h5">
                         {data.title}
@@ -51,4 +53,27 @@ export default function MovieCard({data}) {
             </CardActionArea>
         </AnimatedCard>
     );
+}
+
+function Rate(){
+
+    return (
+        <div style={{
+            width: '40px',
+            height: '40px',
+            background: 'white',
+            borderRadius: '50%',
+            position: 'absolute',
+            top: '20px',
+            right: '20px'
+        }}>
+            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" strokeDashoffset={50}>
+                <circle cx="20" cy="20" r="18" style={{
+                    fill: 'none',
+                    stroke: 'rgb(148 255 0)',
+                    strokeWidth: '3px'
+                }}/>
+            </svg>
+        </div>
+    )
 }
