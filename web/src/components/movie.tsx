@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import {useSpring, a} from "react-spring";
+
+const AnimatedCard = a(Card);
 
 const useStyles = makeStyles({
     root: {
@@ -17,9 +18,22 @@ const useStyles = makeStyles({
 // @ts-ignore
 export default function MovieCard({data}) {
     const classes = useStyles();
+    const [hover, setHover] = useState(false);
+
+    const props = useSpring({
+        width: hover ? 280 : 185
+    });
+
+    function Mouse(){
+        setHover(!hover)
+    }
 
     return (
-        <Card className={classes.root}>
+        <AnimatedCard className={classes.root} style={{
+            width: props.width.to(x => `${x}px`)
+        }}
+        onMouseEnter={Mouse}
+        onMouseLeave={Mouse}>
             <CardActionArea>
                 <CardMedia
                     component="img"
@@ -34,6 +48,6 @@ export default function MovieCard({data}) {
                     </Typography>
                 </CardContent>
             </CardActionArea>
-        </Card>
+        </AnimatedCard>
     );
 }
