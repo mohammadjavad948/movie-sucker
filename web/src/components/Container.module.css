@@ -1,6 +1,10 @@
 .container{
     width: 95%;
-    overflow: auto hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px
 }
 
 ::-webkit-scrollbar {
