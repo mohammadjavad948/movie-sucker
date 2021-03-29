@@ -17,8 +17,8 @@ export default function Container(){
 
     return (
         <div className={style.container}>
-            {movie.length === 0 ? <Loading height={250} width={250}/> : ''
-            }
+            {movie.length === 0 ? <Loading height={250} width={250}/> : ''}
+
             {movie.map((el, index) => <MovieCard data={el} key={index}/>)}
         </div>
     )
