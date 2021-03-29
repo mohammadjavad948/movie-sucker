@@ -13,6 +13,9 @@ export default function Container(){
             .then(res => {
                 setMovie(res.data.results)
             })
+            .catch(e => {
+                console.log(e)
+            })
     }, [])
 
     return (
