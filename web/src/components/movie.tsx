@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import {useSpring, a, config} from "react-spring";
 import style from './Movie.module.css';
 import {useThemeStore} from "../stores/ThemeStore";
+import {Chip} from "@material-ui/core";
 
 const AnimatedCard = a(Card);
 
@@ -51,6 +52,9 @@ export default function MovieCard({data}) {
                     <Typography gutterBottom variant="h6" component="h5">
                         {data.title}
                     </Typography>
+                    <div className={style.genres}>
+                        <Chip label="Basic" variant="outlined" />
+                    </div>
                 </CardContent>
             </CardActionArea>
         </AnimatedCard>
