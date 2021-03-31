@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import style from './Container.module.css';
 import MovieCard from "./movie";
 import Loading from "./Loading";
-import {discover} from "../api/api";
+import {allGenres, discover} from "../api/api";
 import {Button} from "@material-ui/core";
 
 export default function Container(){
@@ -10,6 +10,15 @@ export default function Container(){
     const [movie, setMovie] = useState([]);
     const [page, setPage] = useState(1);
     const [maxPage, setMaxPage] = useState(1);
+    const [genres, setGenres] = useState([]);
+
+    useEffect(() => {
+        allGenres()
+            .then(res => {
+                setGenres(res.data.genres);
+            })
+            .catch(console.log)
+    }, []);
 
     useEffect(() => {
         setMovie([]);
