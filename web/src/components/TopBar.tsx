@@ -3,12 +3,19 @@ import {IconButton, Typography} from "@material-ui/core";
 import style from './TopBar.module.css';
 import {useThemeStore} from "../stores/ThemeStore";
 import {useSpring, a, config} from "react-spring";
+import {useHistory} from 'react-router-dom';
 
 export default function TopBar() {
+    const history = useHistory();
+
+    function home(){
+        history.push('/');
+    }
+
     return (
         <div>
             <div className={style.topBar}>
-                <Typography variant={"h6"}>
+                <Typography variant={"h6"} style={{cursor: 'pointer'}} onClick={home}>
                     Movie Sucker
                 </Typography>
                 <ChangeThemeButton/>
