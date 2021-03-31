@@ -3,11 +3,13 @@ import {Fab} from "@material-ui/core";
 import style from './Navigation.module.css';
 import {useSpring, useSprings, a, config} from 'react-spring';
 import {redFlame1, redFlame2, yellowFlame1, yellowFlame2} from "./svgPoints";
-
+import {useHistory} from 'react-router-dom'
 const Afab = a(Fab);
 
 export default function Navigation(){
     const [springs, set] = useSprings(2, (index: number) => ({rotate: index === 0 ? 0 : 180, config: config.wobbly}))
+
+    const history = useHistory()
 
     function searchClick(){
         set.current.forEach((value, index) => {
@@ -16,6 +18,7 @@ export default function Navigation(){
             })
             value.start();
         })
+        history.push('/search')
     }
 
     function backClick(){
