@@ -3,6 +3,7 @@ import style from './Container.module.css';
 import MovieCard from "./movie";
 import Loading from "./Loading";
 import {discover} from "../api/api";
+import {Button} from "@material-ui/core";
 
 export default function Container(){
 
@@ -23,6 +24,14 @@ export default function Container(){
             {movie.length === 0 ? <Loading height={250} width={250}/> : ''}
 
             {movie.map((el, index) => <MovieCard data={el} key={index}/>)}
+            <div className={style.buttons}>
+                <Button variant="contained" color="primary">
+                    Next
+                </Button>
+                <Button variant="contained" color="primary">
+                    Previous
+                </Button>
+            </div>
         </div>
     )
 }
