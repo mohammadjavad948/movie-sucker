@@ -15,40 +15,38 @@ export default function Navigation(){
     useEffect(() => {
 
         if (location.pathname === '/'){
-            set.current.forEach((value, index) => {
-                value.update({
-                    rotate: index === 0 ? 0 : 180
-                });
-                value.start();
-            })
+            backAnimation()
         }else {
-            set.current.forEach((value, index) => {
-                value.update({
-                    rotate: index === 1 ? 0 : 180
-                })
-                value.start();
-            })
+            searchAnimation()
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
 
-    function searchClick(){
+    function searchAnimation(){
         set.current.forEach((value, index) => {
             value.update({
                 rotate: index === 1 ? 0 : 180
             })
             value.start();
         })
-        history.push('/search')
     }
 
-    function backClick(){
+    function backAnimation(){
         set.current.forEach((value, index) => {
             value.update({
                 rotate: index === 0 ? 0 : 180
             });
             value.start();
         })
+    }
+
+    function searchClick(){
+        searchAnimation()
+        history.push('/search')
+    }
+
+    function backClick(){
+        backAnimation()
         history.goBack()
     }
 
