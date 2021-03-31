@@ -46,7 +46,7 @@ export default function Container(){
         <div className={style.container}>
             {movie.length === 0 ? <Loading height={250} width={250}/> : ''}
 
-            {movie.map((el, index) => <MovieCard data={el} key={index}/>)}
+            {movie.map((el, index) => <MovieCard genres={genres} data={el} key={index}/>)}
             <div className={style.buttons}>
                 <Button variant="contained" color="primary" onClick={previusPage} disabled={page === 1}>
                     Previous

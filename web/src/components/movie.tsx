@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 });
 
 // @ts-ignore
-export default function MovieCard({data}) {
+export default function MovieCard({data, genres}) {
     const classes = useStyles();
     const [hover, setHover] = useState(false);
 
@@ -53,7 +53,7 @@ export default function MovieCard({data}) {
                         {data.title}
                     </Typography>
                     <div className={style.genres}>
-                        <Chip label="Basic" variant="outlined" />
+                        {data.genre_ids.map((el: string, index: number) => <Chip label={genres.find((e: any) => e.id === el).name} variant="outlined" key={index}/>)}
                     </div>
                 </CardContent>
             </CardActionArea>
