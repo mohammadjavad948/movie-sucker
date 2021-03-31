@@ -32,6 +32,17 @@ export default function MovieCard({data, genres}) {
         setHover(!hover)
     }
 
+    function generateChips(el: string, index: number){
+        return (
+            <Chip
+                size={"small"}
+                label={genres.find((e: any) => e.id === el).name}
+                variant="outlined"
+                key={index}
+            />
+        )
+    }
+
     return (
         <AnimatedCard className={classes.root} style={{
             width: props.width.to(x => `${x}px`),
@@ -53,7 +64,7 @@ export default function MovieCard({data, genres}) {
                         {data.title}
                     </Typography>
                     <div className={style.genres}>
-                        {data.genre_ids.map((el: string, index: number) => <Chip label={genres.find((e: any) => e.id === el).name} variant="outlined" key={index}/>)}
+                        {data.genre_ids.map(generateChips)}
                     </div>
                 </CardContent>
             </CardActionArea>
