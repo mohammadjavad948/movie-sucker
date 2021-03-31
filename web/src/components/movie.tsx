@@ -55,7 +55,7 @@ export default function MovieCard({data, genres}) {
                     component="img"
                     alt={data.title}
                     height="278"
-                    image={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+                    image={`https://image.tmdb.org/t/p/w185${data.poster_path}`}
                     title={data.title}
                 />
                 <Rate rate={data.vote_average}/>
