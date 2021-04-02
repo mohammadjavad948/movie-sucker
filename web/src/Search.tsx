@@ -1,6 +1,6 @@
 import React, {FC, useState} from 'react';
 import {Button, TextField} from "@material-ui/core";
-import {useSpring, a} from "react-spring";
+import {useSpring, a, config} from "react-spring";
 import {Search as SearchIcon} from '@material-ui/icons';
 
 export default function Search(){
@@ -40,6 +40,10 @@ const SearchBox: FC<SearchBoxI> = (props) => {
         props.searchClick(query);
     }
 
+    function click(){
+        props.searchClick(query);
+    }
+
     return (
         <div style={{
             display: 'flex',
@@ -57,17 +61,40 @@ const SearchBox: FC<SearchBoxI> = (props) => {
                 onMouseEnter={mouse}
                 onMouseLeave={mouse}
             />
-            <Button
-                variant={"contained"}
-                color={"secondary"}
-                onClick={() => props.searchClick(query)}
-                style={{
-                    minWidth: 'unset',
-                    padding: '14px 14px'
-                }}
-            >
-                <SearchIcon/>
-            </Button>
+           <SearchButton searchClick={click}/>
         </div>
+    )
+}
+
+const AnimatedButton = a(Button);
+
+// @ts-ignore
+function SearchButton(props){
+
+    const [hover, setHover] = useState(false);
+    const animation = useSpring({
+        borderRadius: hover ? 25 : 5,
+        config: config.wobbly
+    })
+
+    function mouse(){
+        setHover(!hover);
+    }
+
+    return (
+        <AnimatedButton
+            variant={"contained"}
+            color={"secondary"}
+            onClick={() => props.searchClick()}
+            style={{
+                minWidth: 'unset',
+                padding: '14px 14px',
+                borderRadius: animation.borderRadius.to(x => `${x}px`)
+            }}
+            onMouseEnter={mouse}
+            onMouseLeave={mouse}
+        >
+            <SearchIcon/>
+        </AnimatedButton>
     )
 }
