@@ -24,7 +24,7 @@ export default function MovieCard({data, genres}) {
     const [hover, setHover] = useState(false);
 
     const props = useSpring({
-        width: hover ? 200 : 185,
+        y: hover ? -10 : 0,
         config: config.wobbly
     });
 
@@ -45,7 +45,7 @@ export default function MovieCard({data, genres}) {
 
     return (
         <AnimatedCard className={classes.root} style={{
-            width: props.width.to(x => `${x}px`),
+            translateY: props.y.to(x => `${x}px`),
             position: 'relative'
         }}
         onMouseEnter={Mouse}
