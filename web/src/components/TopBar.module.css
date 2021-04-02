@@ -2,7 +2,22 @@
     fill: none; stroke-width: 36px;
 }
 
+.container{
+
+}
+
 .topBar{
     display: flex;
     gap: 50px;
+    justify-content: space-around;
+}
+
+@media only screen and (max-width: 500px) {
+    .container{
+        width: 100%;
+    }
+
+    .topBar{
+        width: 100%;
+    }
 }

@@ -13,7 +13,7 @@ export default function TopBar() {
     }
 
     return (
-        <div>
+        <div className={style.container}>
             <div className={style.topBar}>
                 <Typography variant={"h6"} style={{cursor: 'pointer'}} onClick={home}>
                     Movie Sucker
