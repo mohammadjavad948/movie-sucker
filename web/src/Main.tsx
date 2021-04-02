@@ -3,6 +3,7 @@ import style from './main.module.css';
 import TopBar from "./components/TopBar";
 import Container from "./components/Container";
 import {Switch, Route} from "react-router-dom";
+import Search from "./Search";
 
 export default function Main(){
     return (
@@ -10,7 +11,7 @@ export default function Main(){
                 <TopBar />
                 <Switch>
                     <Route path="/search">
-                        search
+                        <Search />
                     </Route>
                     <Route path="/">
                         <Container />
