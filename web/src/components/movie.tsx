@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import {useSpring, a, config} from "react-spring";
 import style from './Movie.module.css';
 import {useThemeStore} from "../stores/ThemeStore";
-import {Chip} from "@material-ui/core";
+import {Chip, useTheme} from "@material-ui/core";
 
 const AnimatedCard = a(Card);
 
@@ -22,6 +22,7 @@ const useStyles = makeStyles({
 export default function MovieCard({data, genres}) {
     const classes = useStyles();
     const [hover, setHover] = useState(false);
+    const theme = useTheme();
 
     const props = useSpring({
         y: hover ? -10 : 0,
@@ -46,6 +47,7 @@ export default function MovieCard({data, genres}) {
     return (
         <AnimatedCard className={classes.root} style={{
             translateY: props.y.to(x => `${x}px`),
+            backgroundColor: theme.palette.background.default,
             position: 'relative'
         }}
         onMouseEnter={Mouse}
