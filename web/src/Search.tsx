@@ -60,6 +60,7 @@ const SearchBox: FC<SearchBoxI> = (props) => {
                 style={width}
                 onMouseEnter={mouse}
                 onMouseLeave={mouse}
+                autoComplete={"off"}
             />
            <SearchButton searchClick={click}/>
         </div>
