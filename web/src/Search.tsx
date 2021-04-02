@@ -1,6 +1,7 @@
 import React, {FC, useState} from 'react';
 import {Button, TextField} from "@material-ui/core";
 import {useSpring, a} from "react-spring";
+import {Search as SearchIcon} from '@material-ui/icons';
 
 export default function Search(){
 
@@ -60,8 +61,12 @@ const SearchBox: FC<SearchBoxI> = (props) => {
                 variant={"contained"}
                 color={"secondary"}
                 onClick={() => props.searchClick(query)}
+                style={{
+                    minWidth: 'unset',
+                    padding: '14px 14px'
+                }}
             >
-                Go
+                <SearchIcon/>
             </Button>
         </div>
     )
