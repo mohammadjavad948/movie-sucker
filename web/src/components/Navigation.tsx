@@ -79,7 +79,7 @@ function Search({spring, click}) {
             transformOrigin: '150% 150%',
             overflow: 'hidden',
             marginRight: '-38px'
-        }} size={"medium"} onMouseEnter={Mouse} onMouseLeave={Mouse} onClick={() => click()}>
+        }} size={"medium"} color={"primary"} onMouseEnter={Mouse} onMouseLeave={Mouse} onClick={() => click()}>
             <svg viewBox="0 0 500 500">
                 <a.g style={{
                     scale: props.scale,
@@ -128,7 +128,7 @@ function Back({spring, click}){
             rotate: spring.rotate.interpolate((x: number) => `${x}deg`),
             transformOrigin: '150% 150%',
             overflow: 'hidden'
-        }} size={"medium"} onMouseEnter={MouseIn} onMouseLeave={MouseOut} onClick={() => click()}>
+        }} size={"medium"} color={"secondary"} onMouseEnter={MouseIn} onMouseLeave={MouseOut} onClick={() => click()}>
             <svg viewBox="0 0 500 500">
                 <a.g style={{
                     scale: props.scale,
