@@ -8,3 +8,7 @@ export function discover(page: number){
 export function allGenres(){
     return axios.get(`${ENDPOINT}/genre/movie/list?api_key=${API_KEY}`)
 }
+
+export function search(query: string){
+    return axios.get(`${ENDPOINT}/search/movie?api_key=${API_KEY}&query=${encodeURI(query)}`)
+}
