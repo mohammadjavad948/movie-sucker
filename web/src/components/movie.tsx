@@ -57,7 +57,7 @@ export default function MovieCard({data, genres}) {
                     component="img"
                     alt={data.title}
                     height="278"
-                    image={`https://image.tmdb.org/t/p/w185${data.poster_path}`}
+                    image={data.poster_path ? `https://image.tmdb.org/t/p/w185${data.poster_path}` : 'https://www.urbanbrush.net/en/wp-content/uploads/edd/2018/03/web-20180320131623142828.png'}
                     title={data.title}
                 />
                 <Rate rate={data.vote_average}/>
