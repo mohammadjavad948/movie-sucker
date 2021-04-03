@@ -1,17 +1,41 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {Button, TextField} from "@material-ui/core";
 import {useSpring, a, config} from "react-spring";
 import {Search as SearchIcon} from '@material-ui/icons';
+import {allGenres, search as searchApi} from './api/api';
+import style from './components/Container.module.css';
+import MovieCard from "./components/movie";
 
 export default function Search(){
 
-    function search(query: string){
+    const [genres, setGenres] = useState([]);
+    const [movie, setMovie] = useState([]);
 
+    useEffect(() => {
+        allGenres()
+            .then(res => {
+                setGenres(res.data.genres);
+            })
+            .catch(console.log)
+    }, []);
+
+    function search(query: string){
+        searchApi(query).then(data => {
+            setMovie(data.data.results);
+            console.log(data)
+        }).catch(console.log)
     }
 
     return (
-        <div>
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%'
+        }}>
             <SearchBox searchClick={search}/>
+            <div className={style.container} style={{marginTop: '20px'}}>
+                {movie.map((el, index) => <MovieCard genres={genres} data={el} key={index}/>)}
+            </div>
         </div>
     )
 }
