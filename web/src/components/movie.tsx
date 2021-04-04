@@ -9,6 +9,7 @@ import {useSpring, a, config} from "react-spring";
 import style from './Movie.module.css';
 import {useThemeStore} from "../stores/ThemeStore";
 import {Chip, useTheme} from "@material-ui/core";
+import {useHistory} from 'react-router-dom';
 
 const AnimatedCard = a(Card);
 
@@ -23,6 +24,7 @@ export default function MovieCard({data, genres}) {
     const classes = useStyles();
     const [hover, setHover] = useState(false);
     const theme = useTheme();
+    const history = useHistory();
 
     const props = useSpring({
         y: hover ? -10 : 0,
@@ -31,6 +33,10 @@ export default function MovieCard({data, genres}) {
 
     function Mouse(){
         setHover(!hover)
+    }
+
+    function click(){
+        history.push('/movie/' + data.id);
     }
 
     function generateChips(el: string, index: number){
@@ -51,7 +57,7 @@ export default function MovieCard({data, genres}) {
             position: 'relative'
         }}
         onMouseEnter={Mouse}
-        onMouseLeave={Mouse}>
+        onMouseLeave={Mouse} onClick={click}>
             <CardActionArea>
                 <CardMedia
                     component="img"

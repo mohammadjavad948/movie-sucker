@@ -22,7 +22,6 @@ export default function Search(){
     function search(query: string){
         searchApi(query).then(data => {
             setMovie(data.data.results);
-            console.log(data)
         }).catch(console.log)
     }
 
