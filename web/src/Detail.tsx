@@ -20,6 +20,7 @@ export default function Detail(){
         .catch((e) => {
             console.log(e.response);
         });
+        //@ts-ignore
     }, [])
 
     return (
