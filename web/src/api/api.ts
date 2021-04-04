@@ -12,3 +12,7 @@ export function allGenres(){
 export function search(query: string){
     return axios.get(`${ENDPOINT}/search/movie?api_key=${API_KEY}&query=${encodeURI(query)}`)
 }
+
+export function details(id: string){
+    return axios.get(`${ENDPOINT}/movie/${id}?api_key=${API_KEY}`)
+}
