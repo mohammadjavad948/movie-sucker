@@ -20,7 +20,7 @@ export default function Detail(){
         .catch((e) => {
             console.log(e.response);
         });
-        //@ts-ignore
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
