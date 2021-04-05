@@ -54,14 +54,25 @@ function Poster({url}){
 // @ts-ignore
 function TitleAndDetail({movie}){
 
+    const animation = useSpring({
+        from: {
+            translateY: '10px',
+            opacity: 0
+        },
+        to: {
+            translateY: '0px',
+            opacity: 1
+        }
+    })
+
     return (
-        <div>
+        <a.div style={animation}>
             <Typography variant="h5">
                 {movie.title}
             </Typography>
             <Typography variant="body1" style={{maxWidth: '500px'}} component="p">
                 {movie.overview}
             </Typography>
-        </div>
+        </a.div>
     )
 }
