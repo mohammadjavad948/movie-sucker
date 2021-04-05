@@ -25,7 +25,7 @@ export default function Detail(){
     }, [])
 
     return (
-        <div>
+        <div style={{width: '100%'}}>
             {loading ? <Loading height={250} width={250}/> : <MovieDetail movie={movie}/>}
         </div>
     )

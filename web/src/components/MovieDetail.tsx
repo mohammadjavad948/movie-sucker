@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './MovieDetail.module.css';
+import {Typography} from "@material-ui/core";
 
 // @ts-ignore
 export default function MovieDetail({movie}){
@@ -17,6 +18,7 @@ function FirstRow({movie}){
     return (
         <div className={style.firstRow}>
             <Poster url={movie.poster_path}/>
+            <TitleAndDetail movie={movie}/>
         </div>
     )
 }
@@ -35,5 +37,17 @@ function Poster({url}){
             width="185"
             className={style.image}
         />
+    )
+}
+
+// @ts-ignore
+function TitleAndDetail({movie}){
+
+    return (
+        <div>
+            <Typography variant="h5">
+                {movie.title}
+            </Typography>
+        </div>
     )
 }
