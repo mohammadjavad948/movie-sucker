@@ -33,6 +33,7 @@ function Poster({url}){
             alt={url}
             height="278"
             width="185"
+            className={style.image}
         />
     )
 }

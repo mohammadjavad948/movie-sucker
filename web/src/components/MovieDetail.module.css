@@ -10,3 +10,7 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.image{
+    border-radius: 5px;
+}
