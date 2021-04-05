@@ -1,5 +1,5 @@
 .container{
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,7 +8,8 @@
 
 .firstRow{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 30px;
     width: 100%;
 }
 

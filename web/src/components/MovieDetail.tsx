@@ -48,6 +48,9 @@ function TitleAndDetail({movie}){
             <Typography variant="h5">
                 {movie.title}
             </Typography>
+            <Typography variant="body1" style={{maxWidth: '500px'}} component="p">
+                {movie.overview}
+            </Typography>
         </div>
     )
 }
