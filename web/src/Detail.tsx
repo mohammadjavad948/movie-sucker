@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { details } from './api/api';
 import Loading from './components/Loading';
+import MovieDetail from "./components/MovieDetail";
 
 
 export default function Detail(){
@@ -25,8 +26,7 @@ export default function Detail(){
 
     return (
         <div>
-            {/*// @ts-ignore */}
-            {loading ? <Loading height={250} width={250}/> : movie.title}
+            {loading ? <Loading height={250} width={250}/> : <MovieDetail movie={movie}/>}
         </div>
     )
 }
