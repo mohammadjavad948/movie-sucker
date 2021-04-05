@@ -29,12 +29,12 @@ function Poster({url}){
     return (
         <img
             src={
-                url ? `https://image.tmdb.org/t/p/w185${url}` :
+                url ? `https://image.tmdb.org/t/p/w400${url}` :
                     'https://www.urbanbrush.net/en/wp-content/uploads/edd/2018/03/web-20180320131623142828.png'
             }
             alt={url}
-            height="278"
-            width="185"
+            height="300"
+            width="200"
             className={style.image}
         />
     )
