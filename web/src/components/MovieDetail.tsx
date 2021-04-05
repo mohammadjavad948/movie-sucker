@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './MovieDetail.module.css';
 import {Typography} from "@material-ui/core";
+import {useSpring, a} from "react-spring";
 
 // @ts-ignore
 export default function MovieDetail({movie}){
@@ -26,8 +27,17 @@ function FirstRow({movie}){
 // @ts-ignore
 function Poster({url}){
 
+    const animation = useSpring({
+        from: {
+            opacity: 0
+        },
+        to: {
+            opacity: 1
+        }
+    })
+
     return (
-        <img
+        <a.img
             src={
                 url ? `https://image.tmdb.org/t/p/w400${url}` :
                     'https://www.urbanbrush.net/en/wp-content/uploads/edd/2018/03/web-20180320131623142828.png'
@@ -36,6 +46,7 @@ function Poster({url}){
             height="300"
             width="200"
             className={style.image}
+            style={animation}
         />
     )
 }
