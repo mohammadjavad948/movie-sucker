@@ -70,7 +70,7 @@ function TitleAndDetail({movie}){
             <Typography variant="h5">
                 {movie.title}
             </Typography>
-            <Typography variant="body1" style={{maxWidth: '500px', marginTop: '10px'}} component="p">
+            <Typography variant="body1" style={{maxWidth: '500px', marginTop: '10px', filter: 'brightness(0.9)'}} component="p">
                 {movie.overview}
             </Typography>
         </a.div>
