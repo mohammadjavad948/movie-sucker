@@ -82,7 +82,7 @@ function TitleAndDetail({movie}){
     return (
         <a.div style={animation}>
             <Typography variant="h5">
-                {movie.title}
+                {movie.title} - {movie.vote_average} / 10
             </Typography>
             <Typography variant="body1" style={{maxWidth: '500px', marginTop: '10px', filter: 'brightness(0.9)'}} component="p">
                 {movie.overview}
