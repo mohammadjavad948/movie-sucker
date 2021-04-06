@@ -120,6 +120,7 @@ function Genres({movie}){
              variant={"outlined"}
              style={{marginLeft: '10px', marginTop: '10px', opacity: props.opacity}}
              label={movie.genres[index].name}
+             className={style.genresChip}
              key={index}
              />
         )

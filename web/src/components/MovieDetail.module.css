@@ -17,6 +17,14 @@
     border-radius: 5px;
 }
 
+.genresChip{
+
+}
+
+.genresChip:hover{
+    color: aqua;
+}
+
 @media only screen and (max-width: 750px) {
     .firstRow{
         flex-direction: column;
