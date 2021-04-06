@@ -1,7 +1,7 @@
 {
   "name": "movie-sucker",
   "version": "1.0.0",
-  "description": "",
+  "description": "an interface for sucks movies",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
