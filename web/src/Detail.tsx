@@ -17,7 +17,6 @@ export default function Detail(){
         .then(res => {
             setMovie(res.data);
             setLoading(false);
-            console.log(res)
         })
         .catch((e) => {
             console.log(e.response);
