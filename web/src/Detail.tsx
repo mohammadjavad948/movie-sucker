@@ -15,8 +15,8 @@ export default function Detail(){
     useEffect(() => {
         details(id)
         .then(res => {
-            setLoading(false);
             setMovie(res.data);
+            setLoading(false);
         })
         .catch((e) => {
             console.log(e.response);
