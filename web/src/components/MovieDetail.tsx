@@ -71,11 +71,6 @@ function TitleAndDetail({movie}){
         }
     })
 
-
-    function generateLanguageChips(el: {english_name: string}, index: number){
-        return <Chip variant={"outlined"} label={el.english_name} style={{marginLeft: '10px', marginTop: '10px'}} key={index}/>
-    }
-
     return (
         <a.div style={animation}>
             <Typography variant="h5">
@@ -88,10 +83,7 @@ function TitleAndDetail({movie}){
                 release : {new Date(movie.release_date).toDateString()}
             </Typography>
             <Genres movie={movie}/>
-            <div style={{marginTop: '20px'}}>
-                <Typography variant="body1">Languages</Typography>
-                {movie.spoken_languages.map(generateLanguageChips)}
-            </div>
+           <Languages movie={movie}/>
         </a.div>
     )
 }
@@ -129,6 +121,41 @@ function Genres({movie}){
     return (
         <div>
             {animation.map(generateGenresChips)}
+        </div>
+    )
+}
+
+// @ts-ignore
+function Languages({movie}){
+
+    const animation = useTrail(movie.spoken_languages.length, {
+        from: {
+            opacity: 0
+        },
+        to: {
+            opacity: 1
+        },
+        config: {
+            duration: 200
+        },
+        delay: 500
+    });
+
+    function generateLanguageChips(props: any, index: number){
+        return (
+            <AnimatedChip
+                variant={"outlined"}
+                style={{marginLeft: '10px', marginTop: '10px', opacity: props.opacity}}
+                label={movie.spoken_languages[index].english_name}
+                key={index}
+            />
+        )
+    }
+
+    return (
+        <div style={{marginTop: '20px'}}>
+            <Typography variant="body1">Languages</Typography>
+            {animation.map(generateLanguageChips)}
         </div>
     )
 }
