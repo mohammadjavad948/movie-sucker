@@ -65,8 +65,12 @@ function TitleAndDetail({movie}){
         }
     })
 
-    function generateChips(el: {name: string}, index: number){
+    function generateGenresChips(el: {name: string}, index: number){
         return <Chip variant={"outlined"} label={el.name} style={{marginLeft: '10px', marginTop: '10px'}} key={index}/>
+    }
+
+    function generateLanguageChips(el: {english_name: string}, index: number){
+        return <Chip variant={"outlined"} label={el.english_name} style={{marginLeft: '10px', marginTop: '10px'}} key={index}/>
     }
 
     return (
@@ -78,7 +82,11 @@ function TitleAndDetail({movie}){
                 {movie.overview}
             </Typography>
             <div>
-                {movie.genres.map(generateChips)}
+                {movie.genres.map(generateGenresChips)}
+            </div>
+            <div style={{marginTop: '20px'}}>
+                <Typography variant="body1">Languages</Typography>
+                {movie.spoken_languages.map(generateLanguageChips)}
             </div>
         </a.div>
     )
