@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './MovieDetail.module.css';
-import {Typography} from "@material-ui/core";
+import {Chip, Typography} from "@material-ui/core";
 import {useSpring, a} from "react-spring";
 
 // @ts-ignore
@@ -65,6 +65,10 @@ function TitleAndDetail({movie}){
         }
     })
 
+    function generateChips(el: {name: string}, index: number){
+        return <Chip variant={"outlined"} label={el.name} style={{marginLeft: '10px', marginTop: '10px'}} key={index}/>
+    }
+
     return (
         <a.div style={animation}>
             <Typography variant="h5">
@@ -73,6 +77,9 @@ function TitleAndDetail({movie}){
             <Typography variant="body1" style={{maxWidth: '500px', marginTop: '10px', filter: 'brightness(0.9)'}} component="p">
                 {movie.overview}
             </Typography>
+            <div>
+                {movie.genres.map(generateChips)}
+            </div>
         </a.div>
     )
 }
