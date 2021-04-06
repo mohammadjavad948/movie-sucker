@@ -11,22 +11,25 @@ export default function Container(){
     const [page, setPage] = useState(1);
     const [maxPage, setMaxPage] = useState(1);
     const [genres, setGenres] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         allGenres()
             .then(res => {
                 setGenres(res.data.genres);
+                setLoading(false);
             })
             .catch(console.log)
     }, []);
 
     useEffect(() => {
-        setMovie([]);
+        setLoading(true);
 
         discover(page)
             .then(res => {
                 setMovie(res.data.results)
                 setMaxPage(res.data.total_pages)
+                setLoading(false);
             })
             .catch(e => {
                 console.log(e)
@@ -44,9 +47,12 @@ export default function Container(){
 
     return (
         <div className={style.container}>
-            {movie.length === 0 ? <Loading height={250} width={250}/> : ''}
+            {
+                loading ?
+                    <Loading height={250} width={250}/> :
+                    movie.map((el, index) => <MovieCard genres={genres} data={el} key={index}/>)
+            }
 
-            {movie.map((el, index) => <MovieCard genres={genres} data={el} key={index}/>)}
             <div className={style.buttons}>
                 <Button variant="contained" color="primary" onClick={previusPage} disabled={page === 1}>
                     Previous
