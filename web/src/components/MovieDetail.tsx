@@ -13,6 +13,12 @@ export default function MovieDetail({movie}){
     )
 }
 
+/*
+ * FirstRow => fort row that contains image and details about movie
+ * Poster => component that shows movie poster
+ * TitleAndDetail => component that shows title, description, genres and languages
+ */
+
 // @ts-ignore
 function FirstRow({movie}){
 
