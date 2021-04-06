@@ -14,6 +14,8 @@ export default function Container(){
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
+
         allGenres()
             .then(res => {
                 setGenres(res.data.genres);
