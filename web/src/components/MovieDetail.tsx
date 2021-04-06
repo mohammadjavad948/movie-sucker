@@ -87,6 +87,9 @@ function TitleAndDetail({movie}){
             <Typography variant="body1" style={{maxWidth: '500px', marginTop: '10px', filter: 'brightness(0.9)'}} component="p">
                 {movie.overview}
             </Typography>
+            <Typography variant="body1" style={{marginTop: '10px'}}>
+                release : {new Date(movie.release_date).toDateString()}
+            </Typography>
             <div>
                 {movie.genres.map(generateGenresChips)}
             </div>
