@@ -58,6 +58,18 @@ function Poster({url}){
 }
 
 // @ts-ignore
+function AnimatedText({ children, ...props }) {
+    const Animation = (i: number) =>
+        useSpring({ opacity: 1, from: { opacity: 0 }, delay: i * 5 });
+
+    return children.split("").map((item: string, index: number) => (
+        <a.span key={index} style={Animation(index)} {...props}>
+            {item}
+        </a.span>
+    ));
+}
+
+// @ts-ignore
 function TitleAndDetail({movie}){
 
     const animation = useSpring({
@@ -77,7 +89,9 @@ function TitleAndDetail({movie}){
                 {movie.title} - {movie.vote_average} / 10
             </Typography>
             <Typography variant="body1" style={{maxWidth: '500px', marginTop: '10px', filter: 'brightness(0.9)'}} component="p">
-                {movie.overview}
+                <AnimatedText>
+                    {movie.overview}
+                </AnimatedText>
             </Typography>
             <Typography variant="body1" style={{marginTop: '10px'}}>
                 release : {new Date(movie.release_date).toDateString()}

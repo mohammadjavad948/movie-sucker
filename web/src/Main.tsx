@@ -5,6 +5,7 @@ import Container from "./components/Container";
 import {Switch, Route} from "react-router-dom";
 import Search from "./Search";
 import Detail from './Detail';
+import {Typography} from "@material-ui/core";
 
 export default function Main(){
     return (
@@ -21,6 +22,11 @@ export default function Main(){
                         <Container />
                     </Route>
                 </Switch>
+                <div style={{marginTop: '80px'}}>
+                    <Typography variant={"caption"}>
+                        made with love by javad & awref
+                    </Typography>
+                </div>
             </div>
     )
 }
