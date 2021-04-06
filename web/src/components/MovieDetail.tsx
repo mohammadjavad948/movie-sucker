@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './MovieDetail.module.css';
 import {Chip, Typography} from "@material-ui/core";
-import {useSpring, a} from "react-spring";
+import {useSpring, a, useTrail} from "react-spring";
 
 // @ts-ignore
 export default function MovieDetail({movie}){
@@ -71,9 +71,6 @@ function TitleAndDetail({movie}){
         }
     })
 
-    function generateGenresChips(el: {name: string}, index: number){
-        return <Chip variant={"outlined"} label={el.name} style={{marginLeft: '10px', marginTop: '10px'}} key={index}/>
-    }
 
     function generateLanguageChips(el: {english_name: string}, index: number){
         return <Chip variant={"outlined"} label={el.english_name} style={{marginLeft: '10px', marginTop: '10px'}} key={index}/>
@@ -90,13 +87,47 @@ function TitleAndDetail({movie}){
             <Typography variant="body1" style={{marginTop: '10px'}}>
                 release : {new Date(movie.release_date).toDateString()}
             </Typography>
-            <div>
-                {movie.genres.map(generateGenresChips)}
-            </div>
+            <Genres movie={movie}/>
             <div style={{marginTop: '20px'}}>
                 <Typography variant="body1">Languages</Typography>
                 {movie.spoken_languages.map(generateLanguageChips)}
             </div>
         </a.div>
+    )
+}
+
+const AnimatedChip = a(Chip);
+
+// @ts-ignore
+function Genres({movie}){
+
+    const animation = useTrail(movie.genres.length, {
+        from: {
+            opacity: 0
+        },
+        to: {
+            opacity: 1
+        },
+        config: {
+            duration: 200
+        },
+        delay: 500
+    })
+
+    function generateGenresChips(props: any, index: number){
+        return (
+            <AnimatedChip
+             variant={"outlined"}
+             style={{marginLeft: '10px', marginTop: '10px', opacity: props.opacity}}
+             label={movie.genres[index].name}
+             key={index}
+             />
+        )
+    }
+    
+    return (
+        <div>
+            {animation.map(generateGenresChips)}
+        </div>
     )
 }
