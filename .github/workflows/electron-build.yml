@@ -26,6 +26,8 @@ jobs:
         run: cd electron && npm install
       - name: Make package
         run: cd electron && npm run make
+      - name: List
+        run: cd electron/out && dir /s /b /o:gn
       - uses: actions/upload-artifact@v2
         with:
           name: build-windows
