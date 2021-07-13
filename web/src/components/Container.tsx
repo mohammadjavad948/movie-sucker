@@ -16,28 +16,19 @@ export default function Container(){
     useEffect(() => {
         setLoading(true);
 
-        allGenres()
-            .then(res => {
-                setGenres(res.data.genres);
-                setLoading(false);
-            })
-            .catch(console.log)
-    }, []);
-
-    useEffect(() => {
-        setLoading(true);
-
-        discover(page)
-            .then(res => {
-                setMovie(res.data.results)
-                setMaxPage(res.data.total_pages)
-                setLoading(false);
-            })
-            .catch(e => {
-                console.log(e)
-            });
-
+        Promis.all([allGenres(), discover()]).then((res) => {
+            const [g, d] = res;
+            
+            setGenres(g.data.genres);
+            
+            setMovie(d.data.results)
+            setMaxPage(d.data.total_pages);
+            
+            setLoading(false);
+        })
+        
     }, [page]);
+
 
     function nextPage(){
         setPage(page + 1)
