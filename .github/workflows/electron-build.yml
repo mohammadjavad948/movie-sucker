@@ -1,0 +1,11 @@
+name: build electron
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
