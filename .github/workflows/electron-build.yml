@@ -9,3 +9,11 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+      - name: Install deps
+      - run: cd electron && npm install
+      - name: Make package
+      - run: cd electron && npm run make
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-ubuntu
+          path: electron/out
