@@ -16,17 +16,17 @@ export default function Container(){
     useEffect(() => {
         setLoading(true);
 
-        Promis.all([allGenres(), discover()]).then((res) => {
+        Promise.all([allGenres(), discover()]).then((res) => {
             const [g, d] = res;
-            
+
             setGenres(g.data.genres);
-            
+
             setMovie(d.data.results)
             setMaxPage(d.data.total_pages);
-            
+
             setLoading(false);
         })
-        
+
     }, [page]);
 
 
