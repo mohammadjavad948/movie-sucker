@@ -12,11 +12,17 @@ jobs:
       - name: Install deps
         run: cd electron && npm install
       - name: Make package
-        run: cd electron && npm run package
-      - uses: actions/upload-artifact@v2
+        run: cd electron && npm run make
+      - name: Upload deb
+        uses: actions/upload-artifact@v2
         with:
-          name: build-ubuntu
-          path: electron/out
+          name: build-ubuntu-deb
+          path: electron/out/make/deb
+      - name: Upload rpm
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-ubuntu-rpm
+          path: electron/out/make/rpm
   build-windows:
     runs-on: windows-latest
     steps:
@@ -26,8 +32,6 @@ jobs:
         run: cd electron && npm install
       - name: Make package
         run: cd electron && npm run make
-      - name: List
-        run: cd electron/out && dir /s /b
       - uses: actions/upload-artifact@v2
         with:
           name: build-windows
