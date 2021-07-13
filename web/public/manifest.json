@@ -1,6 +1,6 @@
 {
   "short_name": "Movie sucker",
-  "name": "an interface for sucks movies",
+  "name": "an interface that sucks movies",
   "icons": [
     {
       "src": "favicon.ico",
