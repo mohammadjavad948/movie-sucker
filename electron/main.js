@@ -9,7 +9,8 @@ function createWindow () {
         title: 'movie sucker',
         webPreferences: {
             preload: './preload.js'
-        }
+        },
+        frame: false
     });
 
     win.removeMenu();
