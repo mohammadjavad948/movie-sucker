@@ -16,7 +16,7 @@ export default function Container(){
     useEffect(() => {
         setLoading(true);
 
-        Promise.all([allGenres(), discover()]).then((res) => {
+        Promise.all([allGenres(), discover(page)]).then((res) => {
             const [g, d] = res;
 
             setGenres(g.data.genres);
