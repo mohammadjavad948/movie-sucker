@@ -6,7 +6,10 @@ function createWindow () {
         width: 800,
         height: 600,
         icon: __dirname + '/logo192.png',
-        title: 'movie sucker'
+        title: 'movie sucker',
+        webPreferences: {
+            preload: './preload.js'
+        }
     });
 
     win.removeMenu();
